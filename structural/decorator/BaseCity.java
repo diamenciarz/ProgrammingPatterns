@@ -31,6 +31,7 @@ public class BaseCity implements City {
 
     public static void main(String[] args) {
         PersonType a = PersonType.ARCHER;
-        System.out.println(new Person(new Person(new Building(new BaseCity(CitySpecialization.BUSINESS), BuildingType.MARKET), a), a).toString());
+        System.out.println(new Person(new Person(new Building(new BaseCity(CitySpecialization.BUSINESS), BuildingType.MARKET), a), a));
+        System.out.println(new BaseCity(CitySpecialization.FARMING));
     }
 }
