@@ -4,12 +4,23 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Cargo {
+    private ArrayList<ItemCount> items = new ArrayList<>();
+
     public Cargo() {
 
     }
 
-    public Cargo(ArrayList<Item> items) {
+    public Cargo(ArrayList<ItemCount> items) {
         this.items = items;
+    }
+
+    public boolean contains(ItemCount itemCount) {
+        for (int i = 0; i < items.size(); i++) {
+            if (items.get(i).equals(itemCount)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -19,23 +30,23 @@ public class Cargo {
         }
 
         Cargo cargo = (Cargo) obj;
+        if (cargo.items.size() != items.size()) {
+            return false;
+        }
         for (int i = 0; i < items.size(); i++) {
-            if (!cargo.items.get(i).equals(this.items.get(i))) {
+            if (!cargo.contains(items.get(i))) {
                 return false;
             }
         }
-
         return true;
     }
-
-    private ArrayList<Item> items = new ArrayList<>();
 
     private float totalWeight;
     private boolean isTotalWeightUpToDate = false;
 
     public float getTotalWeight() {
         if (isTotalWeightUpToDate) {
-            return this.totalWeight;
+            return totalWeight;
         }
         updateTotalWeight();
         return totalWeight;
@@ -49,16 +60,10 @@ public class Cargo {
     private float calculateTotalWeight() {
         float total = 0;
 
-        for (Item item : items) {
-            total += item.weight;
+        for (ItemCount itemCount : items) {
+            total += itemCount.count * itemCount.item.weight;
         }
         return total;
-    }
-
-    public void addItem(Item item) {
-        areItemNamesUpToDate = false;
-        isTotalWeightUpToDate = false;
-        items.add(item);
     }
 
     private ArrayList<String> itemNames;
@@ -81,11 +86,23 @@ public class Cargo {
     private ArrayList<String> findAllNames() {
         LinkedList<String> names = new LinkedList<>();
 
-        for (Item item : items) {
-            if (!names.contains(item.name)) {
-                names.add(item.name);
-            }
+        for (ItemCount itemCount : items) {
+            names.add(itemCount.item.name);
         }
         return new ArrayList<String>(names);
+    }
+
+    public void addItem(Item item) {
+        areItemNamesUpToDate = false;
+        isTotalWeightUpToDate = false;
+
+        for (int i = 0; i < items.size(); i++) {
+            ItemCount itemCount = items.get(i);
+            if (itemCount.item.equals(item)) {
+                itemCount.count++;
+                return;
+            }
+        }
+        items.add(new ItemCount(item));
     }
 }
