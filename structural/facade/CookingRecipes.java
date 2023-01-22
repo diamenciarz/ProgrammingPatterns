@@ -59,12 +59,60 @@ public class CookingRecipes {
 
     public Dish makeStrips(int numberOfPickles) {
         ensureMagazineStocked(MagazineStock.KFC);
+        // Make Strips with Carrots and Tomatoes
+        boolean dishReady = false;
+        while (dishReady) {
+            try {
+                Dish strips = new Dish();
+                StockedIngredients carrots = magazine.takeIngredient("Carrot", 5);
+                StockedIngredients tomatoes = magazine.takeIngredient("Tomato", 2);
+                StockedIngredients wings = magazine.takeIngredient("Wing", 5);
 
+                // Deep fry wings
+                ArrayList<PreparedIngredient> deepFriedWings = Kitchen.prepare(wings, Preparation.DEEP_FRY);
+                strips.ingredients.addAll(deepFriedWings);
+                // Fry carrots and tomatoes
+                ArrayList<PreparedIngredient> friedCarrot = Kitchen.prepare(carrots, Preparation.FRY);
+                strips.ingredients.addAll(friedCarrot);
+                ArrayList<PreparedIngredient> friedTomato = Kitchen.prepare(tomatoes, Preparation.FRY);
+                strips.ingredients.addAll(friedTomato);
+                dishReady = true;
+                return strips;
+
+            } catch (Exception e) {
+                stockMagazine(TruckSettings.KFC);
+            }
+        }
+        return null;
     }
 
     public Dish makeHotWings(int numberOfPickles) {
         ensureMagazineStocked(MagazineStock.HOT_STUFF);
+        // Make Wings with Carrots and Tomatoes
+        boolean dishReady = false;
+        while (dishReady) {
+            try {
+                Dish hotWings = new Dish();
+                StockedIngredients sauce = magazine.takeIngredient("Sauce", 1);
+                StockedIngredients tomatoes = magazine.takeIngredient("Tomato", 3);
+                StockedIngredients wings = magazine.takeIngredient("Wing", 7);
 
+                // Bake wings and tomatoes
+                ArrayList<PreparedIngredient> bakedWings = Kitchen.prepare(wings, Preparation.BAKE);
+                hotWings.ingredients.addAll(bakedWings);
+                ArrayList<PreparedIngredient> bakedTomatoes = Kitchen.prepare(tomatoes, Preparation.BAKE);
+                hotWings.ingredients.addAll(bakedTomatoes);
+                // Add sauce
+                ArrayList<PreparedIngredient> rawSauce = Kitchen.prepare(sauce, Preparation.SERVE_RAW);
+                hotWings.ingredients.addAll(rawSauce);
+                dishReady = true;
+                return hotWings;
+
+            } catch (Exception e) {
+                stockMagazine(TruckSettings.HOT_STUFF);
+            }
+        }
+        return null;
     }
 
     private void ensureMagazineStocked(MagazineStock magazineStock) {
@@ -75,8 +123,10 @@ public class CookingRecipes {
     }
 
     private void stockMagazine(TruckSettings settings) {
+        System.out.println("Stocking magazine with:");
         Truck supplyTruck = TruckFactory.instantiate(settings);
         for (ItemCount itemCount : supplyTruck.getCargo().items) {
+            System.out.println(itemCount.count + " of " + itemCount.item.name);
             magazine.putIngredient(itemCount);
         }
 
