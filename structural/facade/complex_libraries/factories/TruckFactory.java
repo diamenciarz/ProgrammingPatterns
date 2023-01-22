@@ -1,16 +1,16 @@
-package structural.facade.complex_libraries;
+package structural.facade.complex_libraries.factories;
 
 import structural.flyweight.Position;
 import structural.flyweight.Truck;
 import structural.flyweight.TruckStats;
 
-enum TruckSettings {
-    PIZZA_HUT,
-    HOT_STUFF,
-    KFC
-}
-
 public class TruckFactory {
+    public enum TruckSettings {
+        PIZZA_HUT,
+        HOT_STUFF,
+        KFC
+    }
+
     public static Truck instantiate(TruckSettings settings) {
         switch (settings) {
             case PIZZA_HUT:
