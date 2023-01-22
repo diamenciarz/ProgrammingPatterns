@@ -1,5 +1,7 @@
 package structural.facade;
 
+import structural.facade.complex_libraries.Dish;
+
 public class CookingRecipes {
     // This class is a facade that produces food using recipes.
     // It uses a multitude of classes that allow to control actions in the kitchen.
@@ -10,7 +12,7 @@ public class CookingRecipes {
     }
     
     public Dish makeSalad(int numberOfPickles){
-        
+
     }
 
 
