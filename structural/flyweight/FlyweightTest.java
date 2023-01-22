@@ -2,42 +2,42 @@ package structural.flyweight;
 
 public class FlyweightTest {
     public static void main(String[] args) {
-        Item tomato = new Item("Work book", 0.45f);
-        Item carrot = new Item("Carrot", 0.25f);
-        Item Lesagna = new Item("Lesagna", 1.5f);
+        Item book = new Item("Work book", 0.45f);
+        Item knife = new Item("Shiv", 0.25f);
+        Item yoyo = new Item("Yoyo", 1.5f);
 
-        Cargo pizzaHutSupplies = new Cargo();
+        Cargo cookhuisSupplies = new Cargo();
         for (int i = 0; i < 100; i++) {
-            pizzaHutSupplies.addItem(carrot);
-            pizzaHutSupplies.addItem(tomato);
+            cookhuisSupplies.addItem(knife);
+            cookhuisSupplies.addItem(book);
         }
-        Cargo KFCSupplies = new Cargo();
+        Cargo aldiSupplies = new Cargo();
         for (int i = 0; i < 140; i++) {
-            KFCSupplies.addItem(Lesagna);
+            aldiSupplies.addItem(yoyo);
         }
         for (int i = 0; i < 70; i++) {
-            KFCSupplies.addItem(carrot);
-            KFCSupplies.addItem(tomato);
+            aldiSupplies.addItem(knife);
+            aldiSupplies.addItem(book);
         }
-        Cargo hotStuffSupplies = new Cargo();
+        Cargo albertHeinSupplies = new Cargo();
         for (int i = 0; i < 40; i++) {
-            hotStuffSupplies.addItem(Lesagna);
+            albertHeinSupplies.addItem(yoyo);
         }
         for (int i = 0; i < 100; i++) {
-            hotStuffSupplies.addItem(tomato);
+            albertHeinSupplies.addItem(book);
         }
 
-        System.out.println("Cookhuis weight " + pizzaHutSupplies.getTotalWeight());
-        System.out.println("Albert Hein weight " + hotStuffSupplies.getTotalWeight());
-        System.out.println("Aldi weight " + KFCSupplies.getTotalWeight());
+        System.out.println("Cookhuis weight " + cookhuisSupplies.getTotalWeight());
+        System.out.println("Albert Hein weight " + albertHeinSupplies.getTotalWeight());
+        System.out.println("Aldi weight " + aldiSupplies.getTotalWeight());
 
-        for (String name : pizzaHutSupplies.getItemNames()) {
+        for (String name : cookhuisSupplies.getItemNames()) {
             System.out.println(name);
         }
-        System.out.println("Cargo from aldi is the same as cargo from lidl: "+ KFCSupplies.equals(hotStuffSupplies));
+        System.out.println("Cargo from aldi is the same as cargo from lidl: "+ aldiSupplies.equals(albertHeinSupplies));
         
-        TruckStats dieselTruck = new TruckStats(KFCSupplies, "Diesel", 2000);
-        TruckStats EVTruck = new TruckStats(hotStuffSupplies, "Tesla Semi", 2023);
+        TruckStats dieselTruck = new TruckStats(aldiSupplies, "Diesel", 2000);
+        TruckStats EVTruck = new TruckStats(albertHeinSupplies, "Tesla Semi", 2023);
         
         System.out.println("Two trucks are the same: "+ dieselTruck.equals(EVTruck));
 

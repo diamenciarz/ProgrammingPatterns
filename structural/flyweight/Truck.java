@@ -2,9 +2,10 @@ package structural.flyweight;
 
 import java.util.ArrayList;
 
+import creational.abstract_factory_builder.AlienAnimal;
 import structural.flyweight.Position;
 
-public class Truck {
+public class Truck implements AlienAnimal {
     // In this scenario we assume that a company has lots of trucks on the road, but
     // their cargo is only one from a few pre-set combinations.
     // The truck's position and fuel value changes by truck,
