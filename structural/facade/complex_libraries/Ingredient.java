@@ -3,8 +3,12 @@ package structural.facade.complex_libraries;
 public class Ingredient {
     public String name;
 
+    public Ingredient(String name) {
+        this.name = name;
+    }
+
     @Override
-    public boolean equals(Object obj){
+    public boolean equals(Object obj) {
         if (!(obj instanceof Ingredient)) {
             return false;
         }
@@ -18,8 +22,8 @@ public class Ingredient {
     }
 
     @Override
-    public String toString(){
-        return  name;
+    public String toString() {
+        return name;
     }
 
 }

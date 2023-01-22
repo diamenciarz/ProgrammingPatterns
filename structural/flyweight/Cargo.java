@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Cargo {
-    private ArrayList<ItemCount> items = new ArrayList<>();
+    public ArrayList<ItemCount> items = new ArrayList<>();
 
     public Cargo() {
 

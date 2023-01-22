@@ -1,6 +1,6 @@
 package structural.facade.complex_libraries;
 
-enum PreparationWay{
+enum PreparationWay {
     COOKED,
     FRIED,
     DEEP_FRIED,
@@ -9,6 +9,11 @@ enum PreparationWay{
 }
 
 public class PreparedIngredient {
+    public PreparedIngredient(Ingredient ingredient, PreparationWay preparationWay) {
+        this.ingredient = ingredient;
+        this.preparationWay = preparationWay;
+    }
+
     public Ingredient ingredient;
     public PreparationWay preparationWay;
 }

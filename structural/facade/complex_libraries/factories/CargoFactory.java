@@ -28,6 +28,7 @@ public class CargoFactory {
                     pizzaHutSupplies.addItem(items.get("Tomato"));
                 }
                 for (int i = 0; i < 50; i++) {
+                    pizzaHutSupplies.addItem(items.get("Sauce"));
                     pizzaHutSupplies.addItem(items.get("Dough"));
                 }
                 return pizzaHutSupplies;

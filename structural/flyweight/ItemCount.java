@@ -4,9 +4,13 @@ public class ItemCount {
     public Item item;
     public int count;
 
-    public ItemCount(Item item) {
+    public ItemCount(Item item, int count) {
         this.item = item;
-        count = 1;
+        this.count = count;
+    }
+
+    public ItemCount(Item item) {
+        this(item, 1);
     }
 
     @Override

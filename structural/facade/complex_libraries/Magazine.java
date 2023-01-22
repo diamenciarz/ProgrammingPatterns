@@ -2,40 +2,53 @@ package structural.facade.complex_libraries;
 
 import java.util.ArrayList;
 
-public class Magazine {
-    private ArrayList<StockedIngredient> ingredientsInStock = new ArrayList<>();
+import structural.facade.complex_libraries.translator.ItemToIngredientTranslator;
+import structural.flyweight.Item;
+import structural.flyweight.ItemCount;
 
-    public void takeIngredient(Ingredient ingredient) throws Exception {
-        takeIngredient(ingredient, 1);
+public class Magazine {
+    private ArrayList<StockedIngredients> ingredientsInStock = new ArrayList<>();
+
+    public StockedIngredients takeIngredient(String ingredientName) throws Exception {
+        return takeIngredient(ingredientName, 1);
     }
 
-    public void takeIngredient(Ingredient ingredient, int count) throws Exception {
-        int ingredientIndex = findIngredientIndex(ingredient);
+    public StockedIngredients takeIngredient(String ingredientName, int count) throws Exception {
+        int ingredientIndex = findIngredientIndex(ingredientName);
         if (ingredientIndex == -1) {
-            throw new Exception("No ingredient" + ingredient + " in magazine");
+            throw new Exception("No ingredient" + ingredientName + " in magazine");
         }
 
-        StockedIngredient stockedIngredient = ingredientsInStock.get(ingredientIndex);
-        if (stockedIngredient.count <= 0) {
-            throw new Exception("No ingredient" + ingredient + " in magazine");
+        StockedIngredients stockedIngredient = ingredientsInStock.get(ingredientIndex);
+        if (stockedIngredient.count < count) {
+            throw new Exception("Not enough ingredients " + ingredientName + " in magazine. Asked for" + count
+                    + " but have " + stockedIngredient.count);
         }
 
         stockedIngredient.count -= count;
+        return new StockedIngredients(stockedIngredient.ingredient, count);
     }
 
-    public void putIngredient(Ingredient ingredient) throws Exception {
-        putIngredient(ingredient, 1);
+    public void putIngredient(Item item) {
+        putIngredient(new ItemCount(item, 1));
     }
 
-    public void putIngredient(Ingredient ingredient, int count) throws Exception {
-        int ingredientIndex = findIngredientIndex(ingredient);
+    public void putIngredient(ItemCount itemCount) {
+        Ingredient ingredientToFind = ItemToIngredientTranslator.translate(itemCount).ingredient;
+        int ingredientIndex = findIngredientIndex(ingredientToFind);
+
         if (ingredientIndex == -1) {
-            StockedIngredient ingredientToStock = new StockedIngredient(ingredient, count);
-            ingredientsInStock.add(ingredientToStock);
+            StockedIngredients ingredientsToStock = ItemToIngredientTranslator.translate(itemCount);
+            ingredientsInStock.add(ingredientsToStock);
+            return;
         }
 
-        StockedIngredient stockedIngredient = ingredientsInStock.get(ingredientIndex);
-        stockedIngredient.count += count;
+        StockedIngredients stockedIngredient = ingredientsInStock.get(ingredientIndex);
+        stockedIngredient.count += itemCount.count;
+    }
+
+    private int findIngredientIndex(String ingredientName) {
+        return findIngredientIndex(new Ingredient(ingredientName));
     }
 
     private int findIngredientIndex(Ingredient ingredient) {
@@ -45,24 +58,5 @@ public class Magazine {
             }
         }
         return -1;
-    }
-
-    private class StockedIngredient {
-        public Ingredient ingredient;
-        public int count;
-
-        public StockedIngredient(Ingredient ingredient, int count) {
-            this.ingredient = ingredient;
-            this.count = count;
-        }
-
-        public boolean contains(Object obj) {
-            if (!(obj instanceof Ingredient)) {
-                return false;
-            }
-
-            Ingredient ingredient = (Ingredient) obj;
-            return ingredient.equals(this.ingredient);
-        }
     }
 }
