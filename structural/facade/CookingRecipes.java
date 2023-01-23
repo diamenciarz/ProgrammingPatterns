@@ -19,23 +19,29 @@ public class CookingRecipes {
     private static MagazineStock magazineStockedFor;
     private static Magazine magazine = new Magazine();
 
+    public static void main(String[] args) {
+        Dish wings = makeHotWings();
+        System.out.println(wings);
+    }
+
     // This class is a facade that produces food using recipes.
     // It uses a multitude of classes that allow to control actions in the kitchen.
     // However, the outcome is a cooked meal without the need for the user to worry
     // about the details
 
-    public Dish makeLesagna(boolean withCheese) {
+    public static Dish makeLesagna(boolean withCheese) {
         ensureMagazineStocked(MagazineStock.PIZZA_HUT);
 
         // Make a Dough, Carrot, and Tomato lesagna
         boolean dishReady = false;
-        while (dishReady) {
+        while (!dishReady) {
             try {
-                Dish lesagna = new Dish();
+                Dish lesagna = new Dish("Lesagna");
                 StockedIngredients dough = magazine.takeIngredient("Dough", 2);
                 StockedIngredients carrots = magazine.takeIngredient("Carrot", 5);
                 StockedIngredients tomatoes = magazine.takeIngredient("Tomato", 10);
                 StockedIngredients sauce = magazine.takeIngredient("Sauce", 1);
+                StockedIngredients cheese = magazine.takeIngredient("Cheese", 1);
                 // Cook filling
 
                 ArrayList<PreparedIngredient> cookedCarrot = Kitchen.prepare(carrots, Preparation.COOK);
@@ -47,6 +53,12 @@ public class CookingRecipes {
                 // Add baked dough
                 ArrayList<PreparedIngredient> bakedDough = Kitchen.prepare(dough, Preparation.BAKE);
                 lesagna.ingredients.addAll(bakedDough);
+
+                if (withCheese) {
+                    ArrayList<PreparedIngredient> bakedCheese = Kitchen.prepare(cheese, Preparation.BAKE);
+                    lesagna.ingredients.addAll(bakedCheese);
+                }
+
                 dishReady = true;
                 return lesagna;
 
@@ -57,16 +69,17 @@ public class CookingRecipes {
         return null;
     }
 
-    public Dish makeStrips(int numberOfPickles) {
+    public static Dish makeStrips(int numberOfPickles) {
         ensureMagazineStocked(MagazineStock.KFC);
         // Make Strips with Carrots and Tomatoes
         boolean dishReady = false;
-        while (dishReady) {
+        while (!dishReady) {
             try {
-                Dish strips = new Dish();
+                Dish strips = new Dish("Chicken strips");
                 StockedIngredients carrots = magazine.takeIngredient("Carrot", 5);
                 StockedIngredients tomatoes = magazine.takeIngredient("Tomato", 2);
                 StockedIngredients wings = magazine.takeIngredient("Wing", 5);
+                StockedIngredients pickles = magazine.takeIngredient("Pickle", numberOfPickles);
 
                 // Deep fry wings
                 ArrayList<PreparedIngredient> deepFriedWings = Kitchen.prepare(wings, Preparation.DEEP_FRY);
@@ -76,6 +89,10 @@ public class CookingRecipes {
                 strips.ingredients.addAll(friedCarrot);
                 ArrayList<PreparedIngredient> friedTomato = Kitchen.prepare(tomatoes, Preparation.FRY);
                 strips.ingredients.addAll(friedTomato);
+                // Add raw pickles
+                ArrayList<PreparedIngredient> rawPickles = Kitchen.prepare(pickles, Preparation.SERVE_RAW);
+                strips.ingredients.addAll(rawPickles);
+
                 dishReady = true;
                 return strips;
 
@@ -86,13 +103,13 @@ public class CookingRecipes {
         return null;
     }
 
-    public Dish makeHotWings(int numberOfPickles) {
+    public static Dish makeHotWings() {
         ensureMagazineStocked(MagazineStock.HOT_STUFF);
         // Make Wings with Carrots and Tomatoes
         boolean dishReady = false;
-        while (dishReady) {
+        while (!dishReady) {
             try {
-                Dish hotWings = new Dish();
+                Dish hotWings = new Dish("Hot wings");
                 StockedIngredients sauce = magazine.takeIngredient("Sauce", 1);
                 StockedIngredients tomatoes = magazine.takeIngredient("Tomato", 3);
                 StockedIngredients wings = magazine.takeIngredient("Wing", 7);
@@ -115,14 +132,14 @@ public class CookingRecipes {
         return null;
     }
 
-    private void ensureMagazineStocked(MagazineStock magazineStock) {
+    private static void ensureMagazineStocked(MagazineStock magazineStock) {
         if (magazineStockedFor != magazineStock) {
             stockMagazine(SettingsTranslator.translate(magazineStock));
             magazineStockedFor = magazineStock;
         }
     }
 
-    private void stockMagazine(TruckSettings settings) {
+    private static void stockMagazine(TruckSettings settings) {
         System.out.println("Stocking magazine with:");
         Truck supplyTruck = TruckFactory.instantiate(settings);
         for (ItemCount itemCount : supplyTruck.getCargo().items) {
