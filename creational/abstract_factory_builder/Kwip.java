@@ -1,5 +1,8 @@
 package creational.abstract_factory_builder;
 
+import structural.chain_of_responsibility.Feedable;
+import structural.facade.complex_libraries.Dish;
+
 enum KwipShape {
     BALL,
     CUBE,
@@ -12,7 +15,7 @@ enum KwipSexuality {
     CAPITALIST
 }
 
-public class Kwip implements AlienAnimal {
+public class Kwip implements AlienAnimal, Feedable {
 
     private KwipShape shape;
     private int dimension;
@@ -40,5 +43,12 @@ public class Kwip implements AlienAnimal {
     public String toString() {
         return sexuality.toString() + " Kwip is a " + shape + " lives in the " + dimension
                 + " dimension, and costs $" + price + ".";
+    }
+
+    @Override
+    public void feed(Dish dish){
+        String message = dish.toString();
+        String ingredient = findMostPopularIngredient(message);
+        
     }
 }
