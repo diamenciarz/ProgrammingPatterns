@@ -2,7 +2,7 @@ package structural.facade.complex_libraries;
 
 import java.util.ArrayList;
 
-import structural.facade.complex_libraries.translator.ItemToIngredientTranslator;
+import structural.facade.complex_libraries.adapter.ItemToIngredientAdapter;
 import structural.flyweight.Item;
 import structural.flyweight.ItemCount;
 
@@ -34,11 +34,11 @@ public class Magazine {
     }
 
     public void putIngredient(ItemCount itemCount) {
-        Ingredient ingredientToFind = ItemToIngredientTranslator.translate(itemCount).ingredient;
+        Ingredient ingredientToFind = ItemToIngredientAdapter.translate(itemCount).ingredient;
         int ingredientIndex = findIngredientIndex(ingredientToFind);
 
         if (ingredientIndex == -1) {
-            StockedIngredients ingredientsToStock = ItemToIngredientTranslator.translate(itemCount);
+            StockedIngredients ingredientsToStock = ItemToIngredientAdapter.translate(itemCount);
             ingredientsInStock.add(ingredientsToStock);
             return;
         }
