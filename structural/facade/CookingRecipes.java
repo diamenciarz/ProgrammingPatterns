@@ -149,7 +149,7 @@ public class CookingRecipes {
 
     }
 
-    private class SettingsTranslator {
+    private static class SettingsTranslator {
         public static TruckSettings translate(MagazineStock magazineStock) {
             switch (magazineStock) {
                 case HOT_STUFF:
