@@ -3,17 +3,19 @@ package structural.facade.complex_libraries;
 import java.util.ArrayList;
 
 import structural.facade.complex_libraries.adapter.ItemToIngredientAdapter;
+import structural.facade.complex_libraries.factories.CargoFactory;
+import structural.facade.complex_libraries.factories.OrderableItemList.AvailableItems;
 import structural.flyweight.Item;
 import structural.flyweight.ItemCount;
 
 public class Magazine {
     private ArrayList<StockedIngredients> ingredientsInStock = new ArrayList<>();
 
-    public StockedIngredients takeIngredient(String ingredientName) throws Exception {
+    public StockedIngredients takeIngredient(AvailableItems ingredientName) throws Exception {
         return takeIngredient(ingredientName, 1);
     }
 
-    public StockedIngredients takeIngredient(String ingredientName, int count) throws Exception {
+    public StockedIngredients takeIngredient(AvailableItems ingredientName, int count) throws Exception {
         int ingredientIndex = findIngredientIndex(ingredientName);
         if (ingredientIndex == -1) {
             throw new Exception("No ingredient" + ingredientName + " in magazine");
@@ -47,8 +49,8 @@ public class Magazine {
         stockedIngredient.count += itemCount.count;
     }
 
-    private int findIngredientIndex(String ingredientName) {
-        return findIngredientIndex(new Ingredient(ingredientName));
+    private int findIngredientIndex(AvailableItems ingredientName) {
+        return findIngredientIndex(CargoFactory.getIngredient(ingredientName));
     }
 
     private int findIngredientIndex(Ingredient ingredient) {

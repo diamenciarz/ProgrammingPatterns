@@ -2,6 +2,7 @@ package structural.facade.complex_libraries.factories;
 
 import java.util.Hashtable;
 
+import structural.facade.complex_libraries.Ingredient;
 import structural.facade.complex_libraries.factories.OrderableItemList.AvailableItems;
 import structural.flyweight.Cargo;
 import structural.flyweight.Item;
@@ -79,6 +80,11 @@ public class CargoFactory {
         items.put(AvailableItems.PICKLE, pickle);
         Item wing = new Item("Wing", 1.5f);
         items.put(AvailableItems.WING, wing);
+    }
+
+    public static Ingredient getIngredient(AvailableItems ingredientName){
+        Item item = items.get(ingredientName);
+        return new Ingredient(item.name);
     }
 
 }

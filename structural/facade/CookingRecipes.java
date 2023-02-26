@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import structural.facade.complex_libraries.*;
 import structural.facade.complex_libraries.Kitchen.Preparation;
 import structural.facade.complex_libraries.factories.TruckFactory;
+import structural.facade.complex_libraries.factories.OrderableItemList.AvailableItems;
 import structural.facade.complex_libraries.factories.TruckFactory.TruckSettings;
 import structural.flyweight.ItemCount;
 import structural.flyweight.Truck;
@@ -37,11 +38,11 @@ public class CookingRecipes {
         while (!dishReady) {
             try {
                 Dish lesagna = new Dish("Lesagna");
-                StockedIngredients dough = magazine.takeIngredient("Dough", 2);
-                StockedIngredients carrots = magazine.takeIngredient("Carrot", 5);
-                StockedIngredients tomatoes = magazine.takeIngredient("Tomato", 5);
-                StockedIngredients sauce = magazine.takeIngredient("Sauce", 1);
-                StockedIngredients cheese = magazine.takeIngredient("Cheese", 1);
+                StockedIngredients dough = magazine.takeIngredient(AvailableItems.DOUGH, 2);
+                StockedIngredients carrots = magazine.takeIngredient(AvailableItems.CARROT, 5);
+                StockedIngredients tomatoes = magazine.takeIngredient(AvailableItems.TOMATO, 5);
+                StockedIngredients sauce = magazine.takeIngredient(AvailableItems.SAUCE, 1);
+                StockedIngredients cheese = magazine.takeIngredient(AvailableItems.CHEESE, 1);
                 // Cook filling
 
                 ArrayList<PreparedIngredient> cookedCarrot = Kitchen.prepare(carrots, Preparation.COOK);
@@ -76,10 +77,10 @@ public class CookingRecipes {
         while (!dishReady) {
             try {
                 Dish strips = new Dish("Chicken strips");
-                StockedIngredients carrots = magazine.takeIngredient("Carrot", 5);
-                StockedIngredients tomatoes = magazine.takeIngredient("Tomato", 2);
-                StockedIngredients wings = magazine.takeIngredient("Wing", 5);
-                StockedIngredients pickles = magazine.takeIngredient("Pickle", numberOfPickles);
+                StockedIngredients carrots = magazine.takeIngredient(AvailableItems.CARROT, 5);
+                StockedIngredients tomatoes = magazine.takeIngredient(AvailableItems.TOMATO, 2);
+                StockedIngredients wings = magazine.takeIngredient(AvailableItems.WING, 5);
+                StockedIngredients pickles = magazine.takeIngredient(AvailableItems.PICKLE, numberOfPickles);
 
                 // Deep fry wings
                 ArrayList<PreparedIngredient> deepFriedWings = Kitchen.prepare(wings, Preparation.DEEP_FRY);
@@ -110,9 +111,9 @@ public class CookingRecipes {
         while (!dishReady) {
             try {
                 Dish hotWings = new Dish("Hot wings");
-                StockedIngredients sauce = magazine.takeIngredient("Sauce", 1);
-                StockedIngredients tomatoes = magazine.takeIngredient("Tomato", 3);
-                StockedIngredients wings = magazine.takeIngredient("Wing", 7);
+                StockedIngredients sauce = magazine.takeIngredient(AvailableItems.SAUCE, 1);
+                StockedIngredients tomatoes = magazine.takeIngredient(AvailableItems.TOMATO, 3);
+                StockedIngredients wings = magazine.takeIngredient(AvailableItems.WING, 7);
 
                 // Bake wings and tomatoes
                 ArrayList<PreparedIngredient> bakedWings = Kitchen.prepare(wings, Preparation.BAKE);
