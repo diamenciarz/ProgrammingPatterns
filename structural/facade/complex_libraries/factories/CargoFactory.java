@@ -1,6 +1,8 @@
 package structural.facade.complex_libraries.factories;
 
 import java.util.Hashtable;
+
+import structural.facade.complex_libraries.factories.OrderableItemList.AvailableItems;
 import structural.flyweight.Cargo;
 import structural.flyweight.Item;
 
@@ -12,7 +14,7 @@ enum CargoSettings {
 
 public class CargoFactory {
 
-    private static Hashtable<String, Item> items = new Hashtable<>();
+    private static Hashtable<AvailableItems, Item> items = new Hashtable<>();
     private static boolean hasSetupItems = false;
 
     public static Cargo instantiate(CargoSettings settings) {
@@ -24,38 +26,38 @@ public class CargoFactory {
             case PIZZA_HUT:
                 Cargo pizzaHutSupplies = new Cargo();
                 for (int i = 0; i < 100; i++) {
-                    pizzaHutSupplies.addItem(items.get("Carrot"));
-                    pizzaHutSupplies.addItem(items.get("Tomato"));
+                    pizzaHutSupplies.addItem(items.get(AvailableItems.CARROT));
+                    pizzaHutSupplies.addItem(items.get(AvailableItems.TOMATO));
                 }
                 for (int i = 0; i < 50; i++) {
-                    pizzaHutSupplies.addItem(items.get("Sauce"));
-                    pizzaHutSupplies.addItem(items.get("Dough"));
+                    pizzaHutSupplies.addItem(items.get(AvailableItems.SAUCE));
+                    pizzaHutSupplies.addItem(items.get(AvailableItems.DOUGH));
                 }
                 for (int i = 0; i < 25; i++) {
-                    pizzaHutSupplies.addItem(items.get("Cheese"));
+                    pizzaHutSupplies.addItem(items.get(AvailableItems.CHEESE));
                 }
                 return pizzaHutSupplies;
             case KFC:
                 Cargo KFCSupplies = new Cargo();
                 for (int i = 0; i < 100; i++) {
-                    KFCSupplies.addItem(items.get("Pickle"));
+                    KFCSupplies.addItem(items.get(AvailableItems.PICKLE));
                 }
                 for (int i = 0; i < 50; i++) {
-                    KFCSupplies.addItem(items.get("Carrot"));
-                    KFCSupplies.addItem(items.get("Tomato"));
+                    KFCSupplies.addItem(items.get(AvailableItems.CARROT));
+                    KFCSupplies.addItem(items.get(AvailableItems.TOMATO));
                 }
                 for (int i = 0; i < 10; i++) {
-                    KFCSupplies.addItem(items.get("Wing"));
+                    KFCSupplies.addItem(items.get(AvailableItems.WING));
                 }
                 return KFCSupplies;
             default:
                 Cargo hotStuffSupplies = new Cargo();
                 for (int i = 0; i < 20; i++) {
-                    hotStuffSupplies.addItem(items.get("Wing"));
+                    hotStuffSupplies.addItem(items.get(AvailableItems.WING));
                 }
                 for (int i = 0; i < 70; i++) {
-                    hotStuffSupplies.addItem(items.get("Tomato"));
-                    hotStuffSupplies.addItem(items.get("Sauce"));
+                    hotStuffSupplies.addItem(items.get(AvailableItems.TOMATO));
+                    hotStuffSupplies.addItem(items.get(AvailableItems.SAUCE));
                 }
                 return hotStuffSupplies;
         }
@@ -64,19 +66,19 @@ public class CargoFactory {
     private static void setupItems() {
         hasSetupItems = true;
         Item tomato = new Item("Tomato", 0.45f);
-        items.put(tomato.name, tomato);
+        items.put(AvailableItems.TOMATO, tomato);
         Item carrot = new Item("Carrot", 0.25f);
-        items.put(carrot.name, carrot);
+        items.put(AvailableItems.CARROT, carrot);
         Item sauce = new Item("Sauce", 0.05f);
-        items.put(sauce.name, sauce);
+        items.put(AvailableItems.SAUCE, sauce);
         Item cheese = new Item("Cheese", 0.5f);
-        items.put(cheese.name, cheese);
+        items.put(AvailableItems.CHEESE, cheese);
         Item dough = new Item("Dough", 0.75f);
-        items.put(dough.name, dough);
+        items.put(AvailableItems.DOUGH, dough);
         Item pickle = new Item("Pickle", 0.15f);
-        items.put(pickle.name, pickle);
+        items.put(AvailableItems.PICKLE, pickle);
         Item wing = new Item("Wing", 1.5f);
-        items.put(wing.name, wing);
+        items.put(AvailableItems.WING, wing);
     }
 
 }
