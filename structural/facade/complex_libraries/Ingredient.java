@@ -1,10 +1,16 @@
 package structural.facade.complex_libraries;
 
+import structural.facade.complex_libraries.factories.CargoFactory;
+import structural.facade.complex_libraries.factories.OrderableItemList.AvailableItems;
+
 public class Ingredient {
     public String name;
 
     public Ingredient(String name) {
         this.name = name;
+    }
+    public Ingredient(AvailableItems name) {
+        this.name = CargoFactory.items.get(name).name;
     }
 
     @Override

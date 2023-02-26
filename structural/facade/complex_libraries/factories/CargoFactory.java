@@ -15,7 +15,7 @@ enum CargoSettings {
 
 public class CargoFactory {
 
-    private static Hashtable<AvailableItems, Item> items = new Hashtable<>();
+    public static Hashtable<AvailableItems, Item> items = new Hashtable<>();
     private static boolean hasSetupItems = false;
 
     public static Cargo instantiate(CargoSettings settings) {

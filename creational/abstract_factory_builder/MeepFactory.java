@@ -8,21 +8,24 @@ import structural.facade.complex_libraries.Ingredient;
 public class MeepFactory implements AlienAnimalFactory {
     public Meep instantiate(CreationSettings settings) {
         switch (settings) {
-            case BORING:
-                ArrayList<Ingredient> boringDiet = new ArrayList<>();
-                return new Meep(MeepColors.GREEN, 100).setDiet(boringDiet);
             case ELDERLY:
-                return new Meep(MeepColors.BLUE, 70).setAge(73);
+                ArrayList<Ingredient> elderlyDiet = MeepDietFactory.instantiate(CreationSettings.BORING);
+                return new Meep(MeepColors.BLUE, 70).setAge(73).setDiet(elderlyDiet);
             case RARE:
-                return new Meep(MeepColors.BLACK, 50).setPrice(100);
+                ArrayList<Ingredient> rareDiet = MeepDietFactory.instantiate(CreationSettings.BORING);
+                return new Meep(MeepColors.BLACK, 50).setPrice(100).setDiet(rareDiet);
             case CHEAP:
-                return new Meep(MeepColors.GREEN, 15).setPrice(1);
+                ArrayList<Ingredient> cheapDiet = MeepDietFactory.instantiate(CreationSettings.BORING);
+                return new Meep(MeepColors.GREEN, 15).setPrice(1).setDiet(cheapDiet);
             case PRETTY:
-                return new Meep(MeepColors.BLUE, 30).setPrice(55).setAge(18);
+                ArrayList<Ingredient> prettyDiet = MeepDietFactory.instantiate(CreationSettings.BORING);
+                return new Meep(MeepColors.BLUE, 30).setPrice(55).setAge(18).setDiet(prettyDiet);
             case SLIM:
-                return new Meep(MeepColors.GREEN, 12).setPrice(22).setAge(12);
+                ArrayList<Ingredient> slimDiet = MeepDietFactory.instantiate(CreationSettings.BORING);
+                return new Meep(MeepColors.GREEN, 12).setPrice(22).setAge(12).setDiet(slimDiet);
             default:
-                return new Meep(MeepColors.GREEN, 100);
+                ArrayList<Ingredient> boringDiet = MeepDietFactory.instantiate(CreationSettings.BORING);
+                return new Meep(MeepColors.GREEN, 100).setDiet(boringDiet);
         }
     }
 }
