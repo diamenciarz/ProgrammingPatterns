@@ -1,7 +1,9 @@
 package creational.abstract_factory_builder;
 
 import creational.abstract_factory_builder.AnimalCreationSettings.CreationSettings;
+import creational.abstract_factory_builder.exceptions.FeedingFailedException;
 import structural.facade.CookingRecipes;
+import structural.facade.complex_libraries.Dish;
 
 public class FactoryTest {
     public static void main(String[] args) {
@@ -21,8 +23,15 @@ public class FactoryTest {
         AlienAnimal rareMeep = meepFactory.instantiate(CreationSettings.RARE);
         AlienAnimal slimMeep = meepFactory.instantiate(CreationSettings.SLIM);
 
-        System.out.println(CookingRecipes.makeLesagna(false));
+        Dish lesagna = CookingRecipes.makeLesagna(false);
+        System.out.println(lesagna);
 
-        
+        try {
+            boringKwip.feed(lesagna);
+        } catch (FeedingFailedException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println(lesagna);
+
     }
 }

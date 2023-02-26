@@ -15,7 +15,7 @@ enum CargoSettings {
 
 public class CargoFactory {
 
-    public static Hashtable<AvailableItems, Item> items = new Hashtable<>();
+    private static Hashtable<AvailableItems, Item> items = new Hashtable<>();
     private static boolean hasSetupItems = false;
 
     public static Cargo instantiate(CargoSettings settings) {
@@ -83,8 +83,18 @@ public class CargoFactory {
     }
 
     public static Ingredient getIngredient(AvailableItems ingredientName){
+        if (!hasSetupItems) {
+            setupItems();
+        }
         Item item = items.get(ingredientName);
         return new Ingredient(item.name);
     }
-
+    
+    public static String getIngredientName(AvailableItems ingredientName){
+        if (!hasSetupItems) {
+            setupItems();
+        }
+        Item item = items.get(ingredientName);
+        return new Ingredient(item.name).name;
+    }
 }

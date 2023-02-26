@@ -10,7 +10,7 @@ public class Ingredient {
         this.name = name;
     }
     public Ingredient(AvailableItems name) {
-        this.name = CargoFactory.items.get(name).name;
+        this.name = CargoFactory.getIngredientName(name);
     }
 
     @Override
