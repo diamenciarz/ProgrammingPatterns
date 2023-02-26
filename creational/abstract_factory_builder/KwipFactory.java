@@ -1,5 +1,7 @@
 package creational.abstract_factory_builder;
 
+import creational.abstract_factory_builder.AnimalCreationSettings.CreationSettings;
+
 public class KwipFactory implements AlienAnimalFactory {
     public AlienAnimal instantiate(CreationSettings settings) {
         switch (settings) {

@@ -1,13 +1,6 @@
 package creational.abstract_factory_builder;
 
-enum CreationSettings {
-    BORING,
-    ELDERLY,
-    RARE,
-    CHEAP,
-    PRETTY,
-    SLIM
-}
+import creational.abstract_factory_builder.AnimalCreationSettings.CreationSettings;
 
 public interface AlienAnimalFactory {
     AlienAnimal instantiate(CreationSettings settings);

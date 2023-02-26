@@ -1,6 +1,6 @@
 package structural.chain_of_responsibility;
 
-import creational.abstract_factory_builder.expections.FeedingFailedException;
+import creational.abstract_factory_builder.exceptions.FeedingFailedException;
 import structural.facade.complex_libraries.Dish;
 
 public interface Feedable {

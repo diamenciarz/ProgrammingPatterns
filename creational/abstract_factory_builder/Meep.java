@@ -2,7 +2,7 @@ package creational.abstract_factory_builder;
 
 import java.util.ArrayList;
 
-import creational.abstract_factory_builder.expections.FeedingFailedException;
+import creational.abstract_factory_builder.exceptions.FeedingFailedException;
 import structural.chain_of_responsibility.Feedable;
 import structural.facade.complex_libraries.Dish;
 import structural.facade.complex_libraries.Ingredient;
@@ -44,8 +44,9 @@ public class Meep implements AlienAnimal, Feedable {
         return color.toString() + " Meep is " + age + " years old, weights " + weight + " and costs $" + price + ".";
     }
 
-    public void setDiet(ArrayList<Ingredient> edibleIngredients) {
+    public Meep setDiet(ArrayList<Ingredient> edibleIngredients) {
         diet = edibleIngredients;
+        return this;
     }
 
     /**
@@ -56,11 +57,24 @@ public class Meep implements AlienAnimal, Feedable {
      */
     @Override
     public void feed(Dish dish) throws FeedingFailedException {
+        checkDishValidity(dish);
         Ingredient[] ingredients = listIngredients(dish);
 
         if (!containsIllegalIngredient(ingredients)) {
             consume(dish);
         }
+    }
+
+    private void checkDishValidity(Dish dish) throws FeedingFailedException {
+        boolean dishIsWronglyDefined = dish.ingredients == null;
+        boolean dishIsEmpty = dish.ingredients.size() == 0;
+        if (dishIsEmpty) {
+            throw new FeedingFailedException("Dish was empty");
+        }
+        if (dishIsWronglyDefined) {
+            throw new FeedingFailedException("Dish was wrongly defined. The list of ingredients was null");
+        }
+
     }
 
     private Ingredient[] listIngredients(Dish dish) {

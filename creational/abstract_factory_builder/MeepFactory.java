@@ -1,10 +1,16 @@
 package creational.abstract_factory_builder;
 
+import java.util.ArrayList;
+
+import creational.abstract_factory_builder.AnimalCreationSettings.CreationSettings;
+import structural.facade.complex_libraries.Ingredient;
+
 public class MeepFactory implements AlienAnimalFactory {
     public Meep instantiate(CreationSettings settings) {
         switch (settings) {
             case BORING:
-                return new Meep(MeepColors.GREEN, 100);
+                ArrayList<Ingredient> boringDiet = new ArrayList<>();
+                return new Meep(MeepColors.GREEN, 100).setDiet(boringDiet);
             case ELDERLY:
                 return new Meep(MeepColors.BLUE, 70).setAge(73);
             case RARE:
