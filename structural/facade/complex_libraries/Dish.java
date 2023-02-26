@@ -12,7 +12,7 @@ public class Dish {
 
     @Override
     public String toString() {
-        String message = name + " contains ";
+        String message = name + " contains";
         for (PreparedIngredient preparedIngredient : ingredients) {
             message += " " + preparedIngredient.preparationWay.toString().toLowerCase() + " "
                     + preparedIngredient.ingredient;

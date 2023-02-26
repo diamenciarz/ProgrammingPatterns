@@ -1,14 +1,5 @@
 package creational.abstract_factory_builder;
 
-enum KwipSettings {
-    BORING,
-    ELDERLY,
-    RARE,
-    CHEAP,
-    PRETTY,
-    SLIM
-}
-
 public class KwipFactory implements AlienAnimalFactory {
     public AlienAnimal instantiate(CreationSettings settings) {
         switch (settings) {
