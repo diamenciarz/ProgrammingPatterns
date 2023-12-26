@@ -17,10 +17,12 @@ public class BaseCity implements City {
         switch (type) {
             case FISHING:
                 specialization = "This is a fishing-oriented city";
+                break;
             case FARMING:
-                specialization = "This is farming-oriented city";
+                specialization = "This is a farming-oriented city";
+                break;
             default:
-                specialization = "This is business-oriented city";
+                specialization = "This is a business-oriented city";
         }
     }
 
@@ -31,7 +33,7 @@ public class BaseCity implements City {
 
     public static void main(String[] args) {
         PersonType a = PersonType.ARCHER;
-        System.out.println(new Person(new Person(new Building(new BaseCity(CitySpecialization.BUSINESS), BuildingType.MARKET), a), a));
-        System.out.println(new BaseCity(CitySpecialization.FARMING));
+        System.out.println(new Person(new Person(new Building(new BaseCity(CitySpecialization.FARMING), BuildingType.MARKET), a), a));
+        // System.out.println(new BaseCity(CitySpecialization.FISHING));
     }
 }

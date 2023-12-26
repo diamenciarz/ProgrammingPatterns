@@ -19,8 +19,10 @@ public class Person extends CityAddon {
         switch (type) {
             case ARCHER:
                 name = "an archer";
+                break;
             case MERCHANT:
                 name = "a merchant";
+                break;
             default:
                 name = "a banker";
         }

@@ -19,8 +19,10 @@ public class Building extends CityAddon {
         switch (type) {
             case BARRACKS:
                 name = "barracks";
+                break;
             case BLACKSMITH:
                 name = "a blacksmith";
+                break;
             default:
                 name = "a market";
                 break;
