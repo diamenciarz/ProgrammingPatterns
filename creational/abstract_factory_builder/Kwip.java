@@ -1,9 +1,12 @@
 package creational.abstract_factory_builder;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 
 import creational.abstract_factory_builder.exceptions.FeedingFailedException;
-import structural.chain_of_responsibility.Feedable;
 import structural.facade.complex_libraries.Dish;
 import structural.facade.complex_libraries.Ingredient;
 import structural.facade.complex_libraries.PreparedIngredient;
@@ -20,7 +23,7 @@ enum KwipSexuality {
     CAPITALIST
 }
 
-public class Kwip implements AlienAnimal, Feedable {
+public class Kwip implements AlienAnimal {
 
     private KwipShape shape;
     private int dimension;
@@ -100,6 +103,10 @@ public class Kwip implements AlienAnimal, Feedable {
         return (ingredientCounts.ingredients.get(index));
     }
 
+    /*
+     * Save the ingredients present in the dish in a form of a dictionary with
+     * counts
+     */
     private IngredientCounts listIngredients(Dish dish) {
         IngredientCounts ingredientCounts = new IngredientCounts();
         for (PreparedIngredient preparedIngredient : dish.ingredients) {
@@ -109,7 +116,8 @@ public class Kwip implements AlienAnimal, Feedable {
     }
 
     private void eatChosenIngredientFromDish(Dish dish, Ingredient ingredientToEat) {
-        for (PreparedIngredient preparedIngredientInDish : dish.ingredients) {
+        for (int i = dish.ingredients.size() - 1; i >= 0; i--) {
+            PreparedIngredient preparedIngredientInDish = dish.ingredients.get(i);
             if (preparedIngredientInDish.ingredient == ingredientToEat) {
                 dish.ingredients.remove(preparedIngredientInDish);
             }

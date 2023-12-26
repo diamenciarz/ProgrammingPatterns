@@ -40,7 +40,7 @@ public class CookingRecipes {
                 Dish lesagna = new Dish("Lesagna");
                 StockedIngredients dough = magazine.takeIngredient(AvailableItems.DOUGH, 2);
                 StockedIngredients carrots = magazine.takeIngredient(AvailableItems.CARROT, 5);
-                StockedIngredients tomatoes = magazine.takeIngredient(AvailableItems.TOMATO, 5);
+                StockedIngredients tomatoes = magazine.takeIngredient(AvailableItems.TOMATO, 6);
                 StockedIngredients sauce = magazine.takeIngredient(AvailableItems.SAUCE, 1);
                 StockedIngredients cheese = magazine.takeIngredient(AvailableItems.CHEESE, 1);
                 // Cook filling
