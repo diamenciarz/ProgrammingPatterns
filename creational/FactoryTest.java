@@ -1,5 +1,6 @@
 package creational;
 
+import behavioral.strategy.AlienAnimal;
 import creational.abstract_factory.FactoryCreator;
 import creational.enums.AnimalCreationSettings.CreationSettings;
 import creational.enums.AnimalTypes.AnimalSpecies;

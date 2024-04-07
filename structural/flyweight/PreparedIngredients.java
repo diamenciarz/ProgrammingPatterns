@@ -1,12 +1,6 @@
-package structural.facade.complex_libraries;
+package structural.flyweight;
 
-enum PreparationWay {
-    COOKED,
-    FRIED,
-    DEEP_FRIED,
-    BAKED,
-    RAW
-}
+import creational.enums.PreparationChoices.PreparationWay;
 
 public class PreparedIngredients {
     public Ingredient ingredient;

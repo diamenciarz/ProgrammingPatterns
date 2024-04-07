@@ -2,9 +2,9 @@ package creational.factories;
 
 import java.util.ArrayList;
 
+import behavioral.strategy.Meep;
 import creational.enums.AnimalCreationSettings.CreationSettings;
-import structural.facade.complex_libraries.Ingredient;
-import structural.strategy.Meep;
+import structural.flyweight.Ingredient;
 import creational.enums.MeepProperties.MeepColors;
 
 public class MeepFactory implements AlienAnimalFactory {

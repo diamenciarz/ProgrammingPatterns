@@ -1,8 +1,8 @@
 package creational.factories;
 
-import creational.AlienAnimal;
+import behavioral.strategy.AlienAnimal;
+import behavioral.strategy.Kwip;
 import creational.enums.AnimalCreationSettings.CreationSettings;
-import structural.strategy.Kwip;
 import creational.enums.KweepProperties.KwipSexuality;
 import creational.enums.KweepProperties.KwipShape;
 

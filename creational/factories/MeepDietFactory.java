@@ -2,9 +2,9 @@ package creational.factories;
 
 import java.util.ArrayList;
 
-import structural.facade.complex_libraries.Ingredient;
 import creational.enums.AnimalCreationSettings.CreationSettings;
 import creational.enums.OrderableItemList.AvailableItems;
+import structural.flyweight.Ingredient;
 
 public class MeepDietFactory {
     public static ArrayList<Ingredient> instantiate(CreationSettings settings) {

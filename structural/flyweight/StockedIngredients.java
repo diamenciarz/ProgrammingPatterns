@@ -1,4 +1,4 @@
-package structural.facade.complex_libraries;
+package structural.flyweight;
 
 public class StockedIngredients {
     public Ingredient ingredient;

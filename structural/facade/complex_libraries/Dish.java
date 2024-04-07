@@ -1,6 +1,7 @@
 package structural.facade.complex_libraries;
 
 import java.util.ArrayList;
+import structural.flyweight.PreparedIngredients;
 
 public class Dish {
     public String name;

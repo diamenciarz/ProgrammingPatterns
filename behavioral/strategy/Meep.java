@@ -1,13 +1,12 @@
-package structural.strategy;
+package behavioral.strategy;
 
 import java.util.ArrayList;
 
-import creational.AlienAnimal;
 import creational.enums.MeepProperties.MeepColors;
 import creational.exceptions.FeedingFailedException;
 import structural.facade.complex_libraries.Dish;
-import structural.facade.complex_libraries.Ingredient;
-import structural.facade.complex_libraries.PreparedIngredients;
+import structural.flyweight.Ingredient;
+import structural.flyweight.PreparedIngredients;
 
 
 

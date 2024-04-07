@@ -1,4 +1,4 @@
-package structural.chain_of_responsibility;
+package behavioral.strategy;
 
 import creational.exceptions.FeedingFailedException;
 import structural.facade.complex_libraries.Dish;

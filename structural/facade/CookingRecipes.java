@@ -3,9 +3,13 @@ package structural.facade;
 import creational.factories.TruckFactory;
 import creational.enums.OrderableItemList.AvailableItems;
 import creational.factories.TruckFactory.TruckSettings;
+import structural.adapter.Kitchen;
+import structural.adapter.Kitchen.Preparation;
 import structural.facade.complex_libraries.*;
-import structural.facade.complex_libraries.Kitchen.Preparation;
 import structural.flyweight.ItemCount;
+import structural.flyweight.Magazine;
+import structural.flyweight.PreparedIngredients;
+import structural.flyweight.StockedIngredients;
 import structural.flyweight.Truck;
 
 enum MagazineStock {

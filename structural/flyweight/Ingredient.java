@@ -1,4 +1,4 @@
-package structural.facade.complex_libraries;
+package structural.flyweight;
 
 import creational.factories.CargoFactory;
 import creational.enums.OrderableItemList.AvailableItems;

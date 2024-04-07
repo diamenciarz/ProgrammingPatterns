@@ -1,4 +1,9 @@
-package structural.facade.complex_libraries;
+package structural.adapter;
+
+import creational.enums.PreparationChoices.PreparationWay;
+import structural.flyweight.Ingredient;
+import structural.flyweight.PreparedIngredients;
+import structural.flyweight.StockedIngredients;
 
 public class Kitchen {
     public enum Preparation {

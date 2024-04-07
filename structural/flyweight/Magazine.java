@@ -1,12 +1,10 @@
-package structural.facade.complex_libraries;
+package structural.flyweight;
 
 import java.util.ArrayList;
 
 import creational.factories.CargoFactory;
 import creational.enums.OrderableItemList.AvailableItems;
-import structural.adapter.ItemToIngredientAdapter;
-import structural.flyweight.Item;
-import structural.flyweight.ItemCount;
+import structural.adapter.ItemToIngredient;
 
 public class Magazine {
     private ArrayList<StockedIngredients> ingredientsInStock = new ArrayList<>();
@@ -36,11 +34,11 @@ public class Magazine {
     }
 
     public void putIngredient(ItemCount itemCount) {
-        Ingredient ingredientToFind = ItemToIngredientAdapter.translate(itemCount).ingredient;
+        Ingredient ingredientToFind = ItemToIngredient.translate(itemCount).ingredient;
         int ingredientIndex = findIngredientIndex(ingredientToFind);
 
         if (ingredientIndex == -1) {
-            StockedIngredients ingredientsToStock = ItemToIngredientAdapter.translate(itemCount);
+            StockedIngredients ingredientsToStock = ItemToIngredient.translate(itemCount);
             ingredientsInStock.add(ingredientsToStock);
             return;
         }

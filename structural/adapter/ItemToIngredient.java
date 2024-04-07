@@ -1,11 +1,11 @@
 package structural.adapter;
 
-import structural.facade.complex_libraries.Ingredient;
-import structural.facade.complex_libraries.StockedIngredients;
+import structural.flyweight.Ingredient;
 import structural.flyweight.Item;
 import structural.flyweight.ItemCount;
+import structural.flyweight.StockedIngredients;
 
-public class ItemToIngredientAdapter {
+public class ItemToIngredient {
     public static StockedIngredients translate(ItemCount itemCount) {
         return new StockedIngredients(new Ingredient(itemCount.item.name), itemCount.count);
     }

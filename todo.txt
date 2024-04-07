@@ -1,0 +1,5 @@
+Handle food weight in recipies and display it
+Use bridge pattern: https://refactoring.guru/design-patterns/bridge
+Use composite pattern: https://refactoring.guru/design-patterns/composite
+Use proxy pattern: https://refactoring.guru/design-patterns/proxy
+

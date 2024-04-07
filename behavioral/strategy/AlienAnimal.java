@@ -1,6 +1,4 @@
-package creational;
-
-import structural.chain_of_responsibility.Feedable;
+package behavioral.strategy;
 
 public interface AlienAnimal extends Feedable {
     @Override
