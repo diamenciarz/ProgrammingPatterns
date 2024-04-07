@@ -1,4 +1,4 @@
-package structural.flyweight;
+package structural.data_storage;
 
 import creational.factories.CargoFactory;
 import creational.enums.OrderableItemList.AvailableItems;

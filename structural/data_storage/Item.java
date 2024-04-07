@@ -1,4 +1,4 @@
-package structural.flyweight;
+package structural.data_storage;
 
 public class Item {
     public Item(String name, float weight) {

@@ -1,5 +1,7 @@
 package structural.flyweight;
 
+import structural.data_storage.Item;
+
 public class FlyweightTest {
     public static void main(String[] args) {
         Item book = new Item("Work book", 0.45f);

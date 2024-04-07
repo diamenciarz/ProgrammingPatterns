@@ -1,5 +1,7 @@
 package structural.flyweight;
 
+import structural.data_storage.Item;
+
 public class ItemCount {
     public Item item;
     public int count;

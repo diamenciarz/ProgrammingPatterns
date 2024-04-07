@@ -1,7 +1,7 @@
 package structural.adapter;
 
-import structural.flyweight.Ingredient;
-import structural.flyweight.Item;
+import structural.data_storage.Ingredient;
+import structural.data_storage.Item;
 import structural.flyweight.ItemCount;
 import structural.flyweight.StockedIngredients;
 

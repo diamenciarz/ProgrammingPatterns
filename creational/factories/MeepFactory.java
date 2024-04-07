@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import behavioral.strategy.Meep;
 import creational.enums.AnimalCreationSettings.CreationSettings;
-import structural.flyweight.Ingredient;
 import creational.enums.MeepProperties.MeepColors;
+import structural.data_storage.Ingredient;
 
 public class MeepFactory implements AlienAnimalFactory {
     public Meep instantiate(CreationSettings settings) {

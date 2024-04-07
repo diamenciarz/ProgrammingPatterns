@@ -1,5 +1,7 @@
 package structural.flyweight;
 
+import structural.data_storage.Ingredient;
+
 public class StockedIngredients {
     public Ingredient ingredient;
     public int count;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import creational.enums.AnimalCreationSettings.CreationSettings;
 import creational.enums.OrderableItemList.AvailableItems;
-import structural.flyweight.Ingredient;
+import structural.data_storage.Ingredient;
 
 public class MeepDietFactory {
     public static ArrayList<Ingredient> instantiate(CreationSettings settings) {

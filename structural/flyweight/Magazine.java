@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import creational.factories.CargoFactory;
 import creational.enums.OrderableItemList.AvailableItems;
 import structural.adapter.ItemToIngredient;
+import structural.data_storage.Ingredient;
+import structural.data_storage.Item;
 
 public class Magazine {
     private ArrayList<StockedIngredients> ingredientsInStock = new ArrayList<>();

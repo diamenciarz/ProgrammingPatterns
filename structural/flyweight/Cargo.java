@@ -3,6 +3,8 @@ package structural.flyweight;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import structural.data_storage.Item;
+
 public class Cargo {
     public ArrayList<ItemCount> items = new ArrayList<>();
 

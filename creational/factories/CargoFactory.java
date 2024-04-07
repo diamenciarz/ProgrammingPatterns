@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import creational.enums.OrderableItemList.AvailableItems;
+import structural.data_storage.Ingredient;
+import structural.data_storage.Item;
 import structural.flyweight.Cargo;
-import structural.flyweight.Ingredient;
-import structural.flyweight.Item;
 import structural.flyweight.ItemCount;
 
 enum CargoSettings {

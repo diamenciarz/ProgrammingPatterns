@@ -1,6 +1,7 @@
 package structural.flyweight;
 
 import creational.enums.PreparationChoices.PreparationWay;
+import structural.data_storage.Ingredient;
 
 public class PreparedIngredients {
     public Ingredient ingredient;

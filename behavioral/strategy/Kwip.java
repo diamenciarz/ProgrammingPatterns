@@ -3,8 +3,8 @@ package behavioral.strategy;
 import creational.enums.KweepProperties.KwipSexuality;
 import creational.enums.KweepProperties.KwipShape;
 import creational.exceptions.FeedingFailedException;
+import structural.data_storage.Ingredient;
 import structural.facade.complex_libraries.Dish;
-import structural.flyweight.Ingredient;
 import structural.flyweight.PreparedIngredients;
 
 public class Kwip implements AlienAnimal {
