@@ -3,7 +3,6 @@ package creational.factories;
 import java.util.ArrayList;
 
 import structural.facade.complex_libraries.Ingredient;
-import creational.enums.AnimalCreationSettings;
 import creational.enums.AnimalCreationSettings.CreationSettings;
 import creational.enums.OrderableItemList.AvailableItems;
 

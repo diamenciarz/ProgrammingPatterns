@@ -1,11 +1,5 @@
 package structural.strategy;
 
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
-
 import creational.AlienAnimal;
 import creational.enums.KweepProperties.KwipSexuality;
 import creational.enums.KweepProperties.KwipShape;
@@ -13,8 +7,6 @@ import creational.exceptions.FeedingFailedException;
 import structural.facade.complex_libraries.Dish;
 import structural.facade.complex_libraries.Ingredient;
 import structural.facade.complex_libraries.PreparedIngredients;
-
-
 
 public class Kwip implements AlienAnimal {
 
@@ -77,7 +69,7 @@ public class Kwip implements AlienAnimal {
         boolean twoWithSameCount = false;
         for (int i = 0; i < dish.ingredients.size(); i++) {
             PreparedIngredients ingredient = dish.ingredients.get(i);
-            
+
             if (ingredient.count == highestCount) {
                 twoWithSameCount = true;
             }
@@ -94,40 +86,12 @@ public class Kwip implements AlienAnimal {
         return dish.ingredients.get(index).ingredient;
     }
 
-    /*
-     * Save the ingredients present in the dish in a form of a dictionary with
-     * counts
-     */
-    private IngredientCounts listIngredients(Dish dish) {
-        IngredientCounts ingredientCounts = new IngredientCounts();
-        for (PreparedIngredients preparedIngredient : dish.ingredients) {
-            ingredientCounts.add(preparedIngredient.ingredient);
-        }
-        return ingredientCounts;
-    }
-
     private void eatChosenIngredientFromDish(Dish dish, Ingredient ingredientToEat) {
         for (int i = dish.ingredients.size() - 1; i >= 0; i--) {
             PreparedIngredients preparedIngredientInDish = dish.ingredients.get(i);
             if (preparedIngredientInDish.ingredient == ingredientToEat) {
                 dish.ingredients.remove(preparedIngredientInDish);
             }
-        }
-    }
-
-    private class IngredientCounts {
-        public ArrayList<Ingredient> ingredients = new ArrayList<>();
-        public ArrayList<Integer> counts = new ArrayList<>();
-
-        public void add(Ingredient ingredient) {
-            for (int i = 0; i < ingredients.size(); i++) {
-                if (ingredients.get(i) == ingredient) {
-                    counts.set(i, counts.get(i) + 1);
-                    return;
-                }
-            }
-            ingredients.add(ingredient);
-            counts.add(1);
         }
     }
 }

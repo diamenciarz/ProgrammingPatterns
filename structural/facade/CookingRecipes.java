@@ -1,7 +1,5 @@
 package structural.facade;
 
-import java.util.ArrayList;
-
 import creational.factories.TruckFactory;
 import creational.enums.OrderableItemList.AvailableItems;
 import creational.factories.TruckFactory.TruckSettings;

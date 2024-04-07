@@ -1,7 +1,5 @@
 package structural.facade.complex_libraries;
 
-import java.util.ArrayList;
-
 public class Kitchen {
     public enum Preparation {
         COOK,

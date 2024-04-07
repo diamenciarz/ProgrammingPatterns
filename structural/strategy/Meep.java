@@ -5,14 +5,13 @@ import java.util.ArrayList;
 import creational.AlienAnimal;
 import creational.enums.MeepProperties.MeepColors;
 import creational.exceptions.FeedingFailedException;
-import structural.chain_of_responsibility.Feedable;
 import structural.facade.complex_libraries.Dish;
 import structural.facade.complex_libraries.Ingredient;
 import structural.facade.complex_libraries.PreparedIngredients;
 
 
 
-public class Meep implements AlienAnimal, Feedable {
+public class Meep implements AlienAnimal {
 
     private MeepColors color;
     private int age;

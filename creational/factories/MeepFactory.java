@@ -2,7 +2,6 @@ package creational.factories;
 
 import java.util.ArrayList;
 
-import creational.enums.AnimalCreationSettings;
 import creational.enums.AnimalCreationSettings.CreationSettings;
 import structural.facade.complex_libraries.Ingredient;
 import structural.strategy.Meep;
