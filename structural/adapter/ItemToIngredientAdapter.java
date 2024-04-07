@@ -1,4 +1,4 @@
-package structural.facade.complex_libraries.adapter;
+package structural.adapter;
 
 import structural.facade.complex_libraries.Ingredient;
 import structural.facade.complex_libraries.StockedIngredients;

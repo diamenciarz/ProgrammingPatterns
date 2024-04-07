@@ -1,4 +1,4 @@
-package creational.abstract_factory_builder.exceptions;
+package creational.exceptions;
 
 public class FeedingFailedException extends Exception {
     public FeedingFailedException(String message){

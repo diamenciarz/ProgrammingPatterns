@@ -2,9 +2,9 @@ package structural.facade.complex_libraries;
 
 import java.util.ArrayList;
 
-import structural.facade.complex_libraries.adapter.ItemToIngredientAdapter;
-import structural.facade.complex_libraries.factories.CargoFactory;
-import structural.facade.complex_libraries.factories.OrderableItemList.AvailableItems;
+import creational.factories.CargoFactory;
+import creational.enums.OrderableItemList.AvailableItems;
+import structural.adapter.ItemToIngredientAdapter;
 import structural.flyweight.Item;
 import structural.flyweight.ItemCount;
 
@@ -18,12 +18,12 @@ public class Magazine {
     public StockedIngredients takeIngredient(AvailableItems ingredientName, int count) throws Exception {
         int ingredientIndex = findIngredientIndex(ingredientName);
         if (ingredientIndex == -1) {
-            throw new Exception("No ingredient" + ingredientName + " in magazine");
+            throw new Exception("No  " + ingredientName + " in magazine");
         }
 
         StockedIngredients stockedIngredient = ingredientsInStock.get(ingredientIndex);
         if (stockedIngredient.count < count) {
-            throw new Exception("Not enough ingredients " + ingredientName + " in magazine. Asked for" + count
+            throw new Exception("Not enough " + ingredientName + " in magazine. Asked for" + count
                     + " but have " + stockedIngredient.count);
         }
 

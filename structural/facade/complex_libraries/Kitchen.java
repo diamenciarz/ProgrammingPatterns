@@ -11,27 +11,21 @@ public class Kitchen {
         SERVE_RAW
     }
 
-    public static ArrayList<PreparedIngredient> prepare(StockedIngredients ingredients, Preparation preparation) {
-        PreparedIngredient preparedIngredient = prepare(ingredients.ingredient, preparation);
-        ArrayList<PreparedIngredient> preparedIngredients = new ArrayList<>();
-        for (int index = 0; index < ingredients.count; index++) {
-            preparedIngredients.add(preparedIngredient);
-        }
-        return preparedIngredients;
-    }
-
-    public static PreparedIngredient prepare(Ingredient ingredient, Preparation preparation) {
+    public static PreparedIngredients prepare(StockedIngredients ingredients, Preparation preparation) {
+        Ingredient ingredient = ingredients.ingredient;
+        int count = ingredients.count;
         switch (preparation) {
             case COOK:
-                return new PreparedIngredient(ingredient, PreparationWay.COOKED);
+                return new PreparedIngredients(ingredient, count, PreparationWay.COOKED);
             case FRY:
-                return new PreparedIngredient(ingredient, PreparationWay.FRIED);
+                return new PreparedIngredients(ingredient, count, PreparationWay.FRIED);
             case DEEP_FRY:
-                return new PreparedIngredient(ingredient, PreparationWay.DEEP_FRIED);
+                return new PreparedIngredients(ingredient, count, PreparationWay.DEEP_FRIED);
             case BAKE:
-                return new PreparedIngredient(ingredient, PreparationWay.BAKED);
+                return new PreparedIngredients(ingredient, count, PreparationWay.BAKED);
             default:
-                return new PreparedIngredient(ingredient, PreparationWay.RAW);
+                return new PreparedIngredients(ingredient, count, PreparationWay.RAW);
         }
     }
+
 }

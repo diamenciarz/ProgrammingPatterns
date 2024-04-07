@@ -1,7 +1,7 @@
 package structural.facade.complex_libraries;
 
-import structural.facade.complex_libraries.factories.CargoFactory;
-import structural.facade.complex_libraries.factories.OrderableItemList.AvailableItems;
+import creational.factories.CargoFactory;
+import creational.enums.OrderableItemList.AvailableItems;
 
 public class Ingredient {
     public String name;

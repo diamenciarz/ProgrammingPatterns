@@ -1,11 +1,13 @@
-package structural.facade.complex_libraries.factories;
+package creational.factories;
 
+import java.util.ArrayList;
 import java.util.Hashtable;
 
+import creational.enums.OrderableItemList.AvailableItems;
 import structural.facade.complex_libraries.Ingredient;
-import structural.facade.complex_libraries.factories.OrderableItemList.AvailableItems;
 import structural.flyweight.Cargo;
 import structural.flyweight.Item;
+import structural.flyweight.ItemCount;
 
 enum CargoSettings {
     PIZZA_HUT,
@@ -22,44 +24,34 @@ public class CargoFactory {
         if (!hasSetupItems) {
             setupItems();
         }
+        ArrayList<ItemCount> itemCounts = new ArrayList<>();
 
         switch (settings) {
             case PIZZA_HUT:
-                Cargo pizzaHutSupplies = new Cargo();
-                for (int i = 0; i < 100; i++) {
-                    pizzaHutSupplies.addItem(items.get(AvailableItems.CARROT));
-                    pizzaHutSupplies.addItem(items.get(AvailableItems.TOMATO));
-                }
-                for (int i = 0; i < 50; i++) {
-                    pizzaHutSupplies.addItem(items.get(AvailableItems.SAUCE));
-                    pizzaHutSupplies.addItem(items.get(AvailableItems.DOUGH));
-                }
-                for (int i = 0; i < 25; i++) {
-                    pizzaHutSupplies.addItem(items.get(AvailableItems.CHEESE));
-                }
+                itemCounts.add(new ItemCount(items.get(AvailableItems.CARROT), 100));
+                itemCounts.add(new ItemCount(items.get(AvailableItems.TOMATO), 100));
+                itemCounts.add(new ItemCount(items.get(AvailableItems.SAUCE), 50));
+                itemCounts.add(new ItemCount(items.get(AvailableItems.DOUGH), 50));
+                itemCounts.add(new ItemCount(items.get(AvailableItems.CHEESE), 25));
+
+                Cargo pizzaHutSupplies = new Cargo(itemCounts);
                 return pizzaHutSupplies;
+                
             case KFC:
-                Cargo KFCSupplies = new Cargo();
-                for (int i = 0; i < 100; i++) {
-                    KFCSupplies.addItem(items.get(AvailableItems.PICKLE));
-                }
-                for (int i = 0; i < 50; i++) {
-                    KFCSupplies.addItem(items.get(AvailableItems.CARROT));
-                    KFCSupplies.addItem(items.get(AvailableItems.TOMATO));
-                }
-                for (int i = 0; i < 10; i++) {
-                    KFCSupplies.addItem(items.get(AvailableItems.WING));
-                }
+                itemCounts.add(new ItemCount(items.get(AvailableItems.PICKLE), 100));
+                itemCounts.add(new ItemCount(items.get(AvailableItems.CARROT), 50));
+                itemCounts.add(new ItemCount(items.get(AvailableItems.TOMATO), 50));
+                itemCounts.add(new ItemCount(items.get(AvailableItems.WING), 10));
+
+                Cargo KFCSupplies = new Cargo(itemCounts);
                 return KFCSupplies;
+                
             default:
-                Cargo hotStuffSupplies = new Cargo();
-                for (int i = 0; i < 20; i++) {
-                    hotStuffSupplies.addItem(items.get(AvailableItems.WING));
-                }
-                for (int i = 0; i < 70; i++) {
-                    hotStuffSupplies.addItem(items.get(AvailableItems.TOMATO));
-                    hotStuffSupplies.addItem(items.get(AvailableItems.SAUCE));
-                }
+                itemCounts.add(new ItemCount(items.get(AvailableItems.WING), 20));
+                itemCounts.add(new ItemCount(items.get(AvailableItems.TOMATO), 70));
+                itemCounts.add(new ItemCount(items.get(AvailableItems.SAUCE), 70));
+
+                Cargo hotStuffSupplies = new Cargo(itemCounts);
                 return hotStuffSupplies;
         }
     }

@@ -16,14 +16,7 @@ public class Item {
         }
 
         Item item = (Item) obj;
-        if (!item.name.equals(name)) {
-            return false;
-        }
-
-        if (item.weight != weight) {
-            return false;
-        }
-        return true;
+        return item.name.equals(name) && item.weight == weight;
     }
 
     @Override

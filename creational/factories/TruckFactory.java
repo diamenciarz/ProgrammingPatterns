@@ -1,4 +1,4 @@
-package structural.facade.complex_libraries.factories;
+package creational.factories;
 
 import structural.flyweight.Position;
 import structural.flyweight.Truck;

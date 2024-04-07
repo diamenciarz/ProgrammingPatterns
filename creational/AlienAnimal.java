@@ -1,4 +1,4 @@
-package creational.abstract_factory_builder;
+package creational;
 
 import structural.chain_of_responsibility.Feedable;
 

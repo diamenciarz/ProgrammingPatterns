@@ -1,18 +1,16 @@
-package creational.abstract_factory_builder;
+package structural.strategy;
 
 import java.util.ArrayList;
 
-import creational.abstract_factory_builder.exceptions.FeedingFailedException;
+import creational.AlienAnimal;
+import creational.enums.MeepProperties.MeepColors;
+import creational.exceptions.FeedingFailedException;
 import structural.chain_of_responsibility.Feedable;
 import structural.facade.complex_libraries.Dish;
 import structural.facade.complex_libraries.Ingredient;
-import structural.facade.complex_libraries.PreparedIngredient;
+import structural.facade.complex_libraries.PreparedIngredients;
 
-enum MeepColors {
-    BLUE,
-    GREEN,
-    BLACK
-}
+
 
 public class Meep implements AlienAnimal, Feedable {
 
@@ -79,7 +77,7 @@ public class Meep implements AlienAnimal, Feedable {
 
     private Ingredient[] listIngredients(Dish dish) {
         ArrayList<Ingredient> rawIngredients = new ArrayList<>();
-        for (PreparedIngredient preparedIngredient : dish.ingredients) {
+        for (PreparedIngredients preparedIngredient : dish.ingredients) {
             rawIngredients.add(preparedIngredient.ingredient);
         }
         return rawIngredients.toArray(new Ingredient[0]);

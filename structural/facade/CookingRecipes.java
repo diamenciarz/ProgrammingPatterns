@@ -2,11 +2,11 @@ package structural.facade;
 
 import java.util.ArrayList;
 
+import creational.factories.TruckFactory;
+import creational.enums.OrderableItemList.AvailableItems;
+import creational.factories.TruckFactory.TruckSettings;
 import structural.facade.complex_libraries.*;
 import structural.facade.complex_libraries.Kitchen.Preparation;
-import structural.facade.complex_libraries.factories.TruckFactory;
-import structural.facade.complex_libraries.factories.OrderableItemList.AvailableItems;
-import structural.facade.complex_libraries.factories.TruckFactory.TruckSettings;
 import structural.flyweight.ItemCount;
 import structural.flyweight.Truck;
 
@@ -45,19 +45,19 @@ public class CookingRecipes {
                 StockedIngredients cheese = magazine.takeIngredient(AvailableItems.CHEESE, 1);
                 // Cook filling
 
-                ArrayList<PreparedIngredient> cookedCarrot = Kitchen.prepare(carrots, Preparation.COOK);
-                lesagna.ingredients.addAll(cookedCarrot);
-                ArrayList<PreparedIngredient> cookedTomato = Kitchen.prepare(tomatoes, Preparation.COOK);
-                lesagna.ingredients.addAll(cookedTomato);
-                ArrayList<PreparedIngredient> justSauceNoKetchup = Kitchen.prepare(sauce, Preparation.SERVE_RAW);
-                lesagna.ingredients.addAll(justSauceNoKetchup);
+                PreparedIngredients cookedCarrot = Kitchen.prepare(carrots, Preparation.BAKE);
+                lesagna.ingredients.add(cookedCarrot);
+                PreparedIngredients cookedTomato = Kitchen.prepare(tomatoes, Preparation.COOK);
+                lesagna.ingredients.add(cookedTomato);
+                PreparedIngredients justSauceNoKetchup = Kitchen.prepare(sauce, Preparation.SERVE_RAW);
+                lesagna.ingredients.add(justSauceNoKetchup);
                 // Add baked dough
-                ArrayList<PreparedIngredient> bakedDough = Kitchen.prepare(dough, Preparation.BAKE);
-                lesagna.ingredients.addAll(bakedDough);
+                PreparedIngredients bakedDough = Kitchen.prepare(dough, Preparation.BAKE);
+                lesagna.ingredients.add(bakedDough);
 
                 if (withCheese) {
-                    ArrayList<PreparedIngredient> bakedCheese = Kitchen.prepare(cheese, Preparation.BAKE);
-                    lesagna.ingredients.addAll(bakedCheese);
+                    PreparedIngredients bakedCheese = Kitchen.prepare(cheese, Preparation.BAKE);
+                    lesagna.ingredients.add(bakedCheese);
                 }
 
                 dishReady = true;
@@ -83,16 +83,16 @@ public class CookingRecipes {
                 StockedIngredients pickles = magazine.takeIngredient(AvailableItems.PICKLE, numberOfPickles);
 
                 // Deep fry wings
-                ArrayList<PreparedIngredient> deepFriedWings = Kitchen.prepare(wings, Preparation.DEEP_FRY);
-                strips.ingredients.addAll(deepFriedWings);
+                PreparedIngredients deepFriedWings = Kitchen.prepare(wings, Preparation.DEEP_FRY);
+                strips.ingredients.add(deepFriedWings);
                 // Fry carrots and tomatoes
-                ArrayList<PreparedIngredient> friedCarrot = Kitchen.prepare(carrots, Preparation.FRY);
-                strips.ingredients.addAll(friedCarrot);
-                ArrayList<PreparedIngredient> friedTomato = Kitchen.prepare(tomatoes, Preparation.FRY);
-                strips.ingredients.addAll(friedTomato);
+                PreparedIngredients friedCarrot = Kitchen.prepare(carrots, Preparation.FRY);
+                strips.ingredients.add(friedCarrot);
+                PreparedIngredients friedTomato = Kitchen.prepare(tomatoes, Preparation.FRY);
+                strips.ingredients.add(friedTomato);
                 // Add raw pickles
-                ArrayList<PreparedIngredient> rawPickles = Kitchen.prepare(pickles, Preparation.SERVE_RAW);
-                strips.ingredients.addAll(rawPickles);
+                PreparedIngredients rawPickles = Kitchen.prepare(pickles, Preparation.SERVE_RAW);
+                strips.ingredients.add(rawPickles);
 
                 dishReady = true;
                 return strips;
@@ -116,13 +116,13 @@ public class CookingRecipes {
                 StockedIngredients wings = magazine.takeIngredient(AvailableItems.WING, 7);
 
                 // Bake wings and tomatoes
-                ArrayList<PreparedIngredient> bakedWings = Kitchen.prepare(wings, Preparation.BAKE);
-                hotWings.ingredients.addAll(bakedWings);
-                ArrayList<PreparedIngredient> bakedTomatoes = Kitchen.prepare(tomatoes, Preparation.BAKE);
-                hotWings.ingredients.addAll(bakedTomatoes);
+                PreparedIngredients bakedWings = Kitchen.prepare(wings, Preparation.BAKE);
+                hotWings.ingredients.add(bakedWings);
+                PreparedIngredients bakedTomatoes = Kitchen.prepare(tomatoes, Preparation.BAKE);
+                hotWings.ingredients.add(bakedTomatoes);
                 // Add sauce
-                ArrayList<PreparedIngredient> rawSauce = Kitchen.prepare(sauce, Preparation.SERVE_RAW);
-                hotWings.ingredients.addAll(rawSauce);
+                PreparedIngredients rawSauce = Kitchen.prepare(sauce, Preparation.SERVE_RAW);
+                hotWings.ingredients.add(rawSauce);
                 dishReady = true;
                 return hotWings;
 

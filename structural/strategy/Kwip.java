@@ -1,4 +1,4 @@
-package creational.abstract_factory_builder;
+package structural.strategy;
 
 import java.util.ArrayList;
 import java.util.Dictionary;
@@ -6,22 +6,15 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 
-import creational.abstract_factory_builder.exceptions.FeedingFailedException;
+import creational.AlienAnimal;
+import creational.enums.KweepProperties.KwipSexuality;
+import creational.enums.KweepProperties.KwipShape;
+import creational.exceptions.FeedingFailedException;
 import structural.facade.complex_libraries.Dish;
 import structural.facade.complex_libraries.Ingredient;
-import structural.facade.complex_libraries.PreparedIngredient;
+import structural.facade.complex_libraries.PreparedIngredients;
 
-enum KwipShape {
-    BALL,
-    CUBE,
-    TETRAHEDRON
-}
 
-enum KwipSexuality {
-    OROROSEXUAL,
-    TERASEXUAL,
-    CAPITALIST
-}
 
 public class Kwip implements AlienAnimal {
 
@@ -79,28 +72,26 @@ public class Kwip implements AlienAnimal {
     }
 
     private Ingredient findMostPopularIngredient(Dish dish) throws FeedingFailedException {
-        IngredientCounts ingredientCounts = listIngredients(dish);
         int highestCount = 0;
         int index = -1;
         boolean twoWithSameCount = false;
-
-        for (int i = 0; i < ingredientCounts.counts.size(); i++) {
-            int currentCount = ingredientCounts.counts.get(i);
-            if (currentCount == highestCount) {
+        for (int i = 0; i < dish.ingredients.size(); i++) {
+            PreparedIngredients ingredient = dish.ingredients.get(i);
+            
+            if (ingredient.count == highestCount) {
                 twoWithSameCount = true;
             }
-            if (currentCount > highestCount) {
-                highestCount = currentCount;
+            if (ingredient.count > highestCount) {
+                highestCount = ingredient.count;
                 index = i;
                 twoWithSameCount = false;
             }
         }
-
         if (twoWithSameCount) {
             throw new FeedingFailedException(
                     "Dish contained two most common ingredients that occured with the same count");
         }
-        return (ingredientCounts.ingredients.get(index));
+        return dish.ingredients.get(index).ingredient;
     }
 
     /*
@@ -109,7 +100,7 @@ public class Kwip implements AlienAnimal {
      */
     private IngredientCounts listIngredients(Dish dish) {
         IngredientCounts ingredientCounts = new IngredientCounts();
-        for (PreparedIngredient preparedIngredient : dish.ingredients) {
+        for (PreparedIngredients preparedIngredient : dish.ingredients) {
             ingredientCounts.add(preparedIngredient.ingredient);
         }
         return ingredientCounts;
@@ -117,7 +108,7 @@ public class Kwip implements AlienAnimal {
 
     private void eatChosenIngredientFromDish(Dish dish, Ingredient ingredientToEat) {
         for (int i = dish.ingredients.size() - 1; i >= 0; i--) {
-            PreparedIngredient preparedIngredientInDish = dish.ingredients.get(i);
+            PreparedIngredients preparedIngredientInDish = dish.ingredients.get(i);
             if (preparedIngredientInDish.ingredient == ingredientToEat) {
                 dish.ingredients.remove(preparedIngredientInDish);
             }
@@ -127,15 +118,6 @@ public class Kwip implements AlienAnimal {
     private class IngredientCounts {
         public ArrayList<Ingredient> ingredients = new ArrayList<>();
         public ArrayList<Integer> counts = new ArrayList<>();
-
-        public boolean contains(Ingredient ingredient) {
-            for (Ingredient ingredientInList : ingredients) {
-                if (ingredientInList == ingredient) {
-                    return true;
-                }
-            }
-            return false;
-        }
 
         public void add(Ingredient ingredient) {
             for (int i = 0; i < ingredients.size(); i++) {

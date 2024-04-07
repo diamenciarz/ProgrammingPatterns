@@ -1,9 +1,11 @@
-package creational.abstract_factory_builder;
+package creational.abstract_factory;
 
-enum AnimalSpecies {
-    KWIP,
-    MEEP
-}
+import creational.enums.AnimalTypes.AnimalSpecies;
+import creational.factories.AlienAnimalFactory;
+import creational.factories.KwipFactory;
+import creational.factories.MeepFactory;
+
+
 
 public class FactoryCreator {
     public static AlienAnimalFactory createAnimal(AnimalSpecies species) {

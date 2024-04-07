@@ -1,4 +1,4 @@
-package structural.facade.complex_libraries.factories;
+package creational.enums;
 
 public class OrderableItemList {
     public enum AvailableItems{

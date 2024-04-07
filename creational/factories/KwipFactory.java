@@ -1,6 +1,10 @@
-package creational.abstract_factory_builder;
+package creational.factories;
 
-import creational.abstract_factory_builder.AnimalCreationSettings.CreationSettings;
+import creational.AlienAnimal;
+import creational.enums.AnimalCreationSettings.CreationSettings;
+import structural.strategy.Kwip;
+import creational.enums.KweepProperties.KwipSexuality;
+import creational.enums.KweepProperties.KwipShape;
 
 public class KwipFactory implements AlienAnimalFactory {
     public AlienAnimal instantiate(CreationSettings settings) {

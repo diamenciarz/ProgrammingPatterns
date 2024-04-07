@@ -1,4 +1,4 @@
-package creational.abstract_factory_builder;
+package creational.enums;
 
 public class AnimalCreationSettings {
     public enum CreationSettings {
