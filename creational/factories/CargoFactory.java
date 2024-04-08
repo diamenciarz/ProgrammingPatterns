@@ -57,7 +57,6 @@ public class CargoFactory {
     }
 
     private static void setupItems() {
-        hasSetupItems = true;
         Item tomato = new Item("Tomato", 0.45f);
         items.put(AvailableItems.TOMATO, tomato);
         Item carrot = new Item("Carrot", 0.25f);
@@ -72,6 +71,8 @@ public class CargoFactory {
         items.put(AvailableItems.PICKLE, pickle);
         Item wing = new Item("Wing", 1.5f);
         items.put(AvailableItems.WING, wing);
+        
+        hasSetupItems = true;
     }
 
     public static Ingredient getIngredient(AvailableItems ingredientName){

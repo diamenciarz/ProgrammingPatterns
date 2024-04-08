@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import creational.enums.MeepProperties.MeepColors;
 import creational.exceptions.FeedingFailedException;
+import structural.data_storage.Dish;
 import structural.data_storage.Ingredient;
-import structural.facade.complex_libraries.Dish;
 import structural.flyweight.PreparedIngredients;
 
 

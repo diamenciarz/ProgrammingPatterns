@@ -6,8 +6,8 @@ import creational.enums.AnimalCreationSettings.CreationSettings;
 import creational.enums.AnimalTypes.AnimalSpecies;
 import creational.exceptions.FeedingFailedException;
 import creational.factories.AlienAnimalFactory;
+import structural.data_storage.Dish;
 import structural.facade.CookingRecipes;
-import structural.facade.complex_libraries.Dish;
 
 public class FactoryTest {
     public static void main(String[] args) {

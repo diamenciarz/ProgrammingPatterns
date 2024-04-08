@@ -1,4 +1,4 @@
-package structural.facade.complex_libraries;
+package structural.data_storage;
 
 import java.util.ArrayList;
 import structural.flyweight.PreparedIngredients;
