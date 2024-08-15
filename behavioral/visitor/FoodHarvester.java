@@ -1,5 +1,5 @@
 package behavioral.visitor;
 
-public abstract class FoodHarvester {
+public abstract interface FoodHarvester {
     
 }
